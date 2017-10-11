@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body>
+	This will be the index page of the project!
+	<div id="wrapper">
+		<h1> Tasks</h1>
+		<% if (error) {%>
+			<%=error%>
+		<%}%>
+		<table border="1"><tr><th>Title</th><th>Description</th><th>completed</th><th>Created</th><th>updated</th></tr>
+		<% if (results) {%>
+			<% for (var project in results) {%>
+			<tr>
+				<td><%=results[project].title%></td>
+				<td><%=results[project].description%></td>
+				<td><%=results[project].completed%></td>
+				<td><%=results[project].createdAt%></td>
+				<td><%=results[project].updatedAt%></td>
+			</tr>
+			<%}%>
+		<%}%>
+		</table>
+
+		<div id="wrapper">
+			<h1> Create New TAsk</h1>
+			<form method="post" action="/task">
+				Title: <input type="text" name="title">
+				Description: <input type="text" name="description">
+				Completed: <input type="radio" name="completed" value="true">True &nbsp; &nbsp; <input type="radio" name="completed" value="false"> False
+				<input type="submit" value="ADD NEW">
+			</form>
+		</div>
+	</div>
+	</body>
+</html>
